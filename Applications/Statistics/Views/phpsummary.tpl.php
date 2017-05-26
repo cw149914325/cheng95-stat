@@ -75,7 +75,7 @@
                     echo "<tr>";
                     foreach ($stat as $interface => $levels) {
                         echo "<td></td><td>$interface</td>";
-                        $stat = array('fail'=>array('count'=>0,'avg'=>0),'timeout_fail'=> array('count'=>0,'avg'=>0),'error_count'=>array('count'=>0,'avg'=>0));
+                        $stat = array('fail'=>array('count'=>0,'avg'=>0),'timeout_fail'=> array('count'=>0,'avg'=>0),'error_fail'=>array('count'=>0,'avg'=>0));
                         $costArr = array();
                         foreach ($levels as $key => $val){
                             if($key == 'timeout'){
@@ -86,8 +86,8 @@
                             else if($key=="error")
                             {
                                 $costArr = array_merge($costArr,$val['cost']);
-                                $stat['error_count']['count']+=$val['count'];
-                                $stat['error_count']['avg']+= round(array_sum($costArr)/count($costArr),4);
+                                $stat['error_fail']['count']+=$val['count'];
+                                $stat['error_fail']['avg']+= round(array_sum($costArr)/count($costArr),4);
                             }
                             $costArr = array_merge($costArr,$val['cost']);
                             $stat['fail']['count']+=$val['count'];
